@@ -2,5 +2,5 @@
 this is test docker app
 
 #use
-./app.sh run
+./app.sh run  
 ./testapp
