@@ -56,7 +56,8 @@ ENV IMAGE_APP_BIN_DIR /data/publish
 ADD ./app $IMAGE_APP_DIR
 
 #build app
-RUN cd $IMAGE_APP_DIR/build && cmake .. && make install && rm -rf $IMAGE_APP_DIR/build/*
+RUN ["/bin/sh", "-c", "cd $IMAGE_APP_DIR/build && cmake .. && make install && rm -rf $IMAGE_APP_DIR/build/*"]
+#RUN cd $IMAGE_APP_DIR/build && cmake .. && make install && rm -rf $IMAGE_APP_DIR/build/*
 
 #return workdir
 WORKDIR $IMAGE_APP_BIN_DIR
