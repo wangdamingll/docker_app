@@ -22,7 +22,7 @@ LABEL Version="0.0.1"
 #RUN ["apt-get", "update"] 　
 
 #flush app cache
-ENV REFRESHED_APP 2020-11-11
+ENV REFRESHED_APP 2020-11-12
 
 #build args 
 #ARG build
@@ -53,11 +53,20 @@ ENV IMAGE_APP_DIR /data/app
 ENV IMAGE_APP_BIN_DIR /data/publish
 
 #add app to image
-ADD ./app $IMAGE_APP_DIR
+#local project source
+#ADD ./app $IMAGE_APP_DIR
+#remote project source
+#ADD https://github.com/wangdamingll/docker_app.git /tmp
 
 #build app
-RUN ["/bin/sh", "-c", "cd $IMAGE_APP_DIR/build && cmake .. && make install && rm -rf $IMAGE_APP_DIR/build/*"]
-#RUN cd $IMAGE_APP_DIR/build && cmake .. && make install && rm -rf $IMAGE_APP_DIR/build/*
+#remote project source
+RUN cd /tmp && git clone https://github.com/wangdamingll/docker_app.git \
+    && mkdir -p $IMAGE_APP_DIR && mv /tmp/docker_app/app/* $IMAGE_APP_DIR \
+    && mkdir $IMAGE_APP_DIR/build && cd $IMAGE_APP_DIR/build && cmake .. && make install \
+    && rm -rf $IMAGE_APP_DIR/build/* /tmp/docker_app
+
+#local project source
+#RUN ["/bin/bash", "-c", "cd $IMAGE_APP_DIR/build && cmake .. && make install && rm -rf $IMAGE_APP_DIR/build/*"]
 
 #return workdir
 WORKDIR $IMAGE_APP_BIN_DIR
