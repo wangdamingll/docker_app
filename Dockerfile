@@ -56,12 +56,7 @@ ENV IMAGE_APP_BIN_DIR /data/publish
 ADD ./app $IMAGE_APP_DIR
 
 #build app
-WORKDIR $IMAGE_APP_DIR
-RUN cmake . && make install
-RUN rm -rf *install* CMakeCache.txt CMakeFiles Makefile
-WORKDIR $IMAGE_APP_DIR/src
-RUN rm -rf *install* CMakeCache.txt CMakeFiles Makefile $APPLICATION_NAME
-#RUN ["rm","-rf","cmake_install.cmake","install_manifest.txt","Makefile","CMakeCache.txt","CMakeFiles"]
+RUN cd $IMAGE_APP_DIR/build && cmake .. && make install && rm -rf $IMAGE_APP_DIR/build/*
 
 #return workdir
 WORKDIR $IMAGE_APP_BIN_DIR
