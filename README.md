@@ -2,7 +2,7 @@
 this is test docker app
 
 # dcoker pull
-Configure the Docker client proxy
+Configure the Docker client proxy  
 https://docs.docker.com/engine/cli/proxy/
 
 # docker config
