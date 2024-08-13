@@ -6,7 +6,7 @@ Configure the Docker client proxy
 https://docs.docker.com/engine/cli/proxy/
 
 # docker config
-cat /etc/docker/daemon.json
+cat /etc/docker/daemon.json    
 {
     "registry-mirrors": [
         "https://dockerproxy.com",
