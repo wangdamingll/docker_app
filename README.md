@@ -1,11 +1,11 @@
 # docker_app
 this is test docker app
 
-#dcoker pull
+# dcoker pull
 Configure the Docker client proxy
 https://docs.docker.com/engine/cli/proxy/
 
-#docker config
+# docker config
 cat /etc/docker/daemon.json
 {
     "registry-mirrors": [
@@ -26,6 +26,6 @@ cat /etc/docker/daemon.json
     }
 }
 
-#use  
+# use  
 ./app.sh run  
 ./testapp
