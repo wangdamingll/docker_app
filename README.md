@@ -8,7 +8,7 @@ https://docs.docker.com/engine/cli/proxy/
 #docker config
 cat /etc/docker/daemon.json
 {
-	"registry-mirrors": [
+    "registry-mirrors": [
         "https://dockerproxy.com",
         "https://docker.m.daocloud.io",
         "https://cr.console.aliyun.com",
@@ -21,9 +21,9 @@ cat /etc/docker/daemon.json
         "https://registry.docker-cn.com"
     ],
     "proxies": {
-	"http-proxy": "socks5://127.0.0.1:1080",
+        "http-proxy": "socks5://127.0.0.1:1080",
         "https-proxy": "socks5://127.0.0.1:1080"
-	}  
+    }
 }
 
 #use  
